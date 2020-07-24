@@ -1,0 +1,168 @@
+{
+    "id": 118187,
+    "content": "Tôi cần bán nhà phố Cầu Giấy\n\nDiện tích sổ 53m2, diện tích công nhận 53m2 x 3 tầng.\n\nMặt tiền cực rộng 3.5m.\r\n\rGiá chào 4.95 tỷ có thương lượng.\r\n\rNhà nằm cách Phố Cầu Giấy chỉ vài bước chân, nhà nằm vị trí trung tâm giao thông thuận tiện.\r\n\rMô tả:\r\n\rTầng 1: Bếp + Phòng Khách.\r\n\rTầng 2: 2 phòng ngủ + wc.\r\n\rTầng 3: 1 ngủ + Phòng thờ + sân phơi.\r\n\rChủ nhà xác định bán đất.\r\n\rLiên hệ tôi Mr. Tâm 0989310622.",
+    "realestate_type": 2,
+    "floor": 3.0,
+    "attributes": [
+      {
+        "content": "Tôi cần",
+        "type": "normal"
+      },
+      {
+        "content": "bán",
+        "type": "transaction_type"
+      },
+      {
+        "content": "nhà",
+        "type": "realestate_type"
+      },
+      {
+        "content": "phố",
+        "type": "normal"
+      },
+      {
+        "content": "Cầu Giấy",
+        "type": "addr_district"
+      },
+      {
+        "content": "\n Diện tích sổ",
+        "type": "normal"
+      },
+      {
+        "content": "53 m 2",
+        "type": "area"
+      },
+      {
+        "content": ", diện tích công nhận",
+        "type": "normal"
+      },
+      {
+        "content": "53 m 2",
+        "type": "area"
+      },
+      {
+        "content": "x",
+        "type": "normal"
+      },
+      {
+        "content": "3 tầng",
+        "type": "interior_floor"
+      },
+      {
+        "content": ". \n Mặt tiền cực rộng 3 . 5 m . \n Giá chào",
+        "type": "normal"
+      },
+      {
+        "content": "4 . 95 tỷ",
+        "type": "price"
+      },
+      {
+        "content": "có thương lượng . \n",
+        "type": "normal"
+      },
+      {
+        "content": "Nhà",
+        "type": "realestate_type"
+      },
+      {
+        "content": "nằm cách",
+        "type": "normal"
+      },
+      {
+        "content": "Phố",
+        "type": "surrounding"
+      },
+      {
+        "content": "Cầu Giấy",
+        "type": "surrounding_name"
+      },
+      {
+        "content": "chỉ vài bước chân ,",
+        "type": "normal"
+      },
+      {
+        "content": "nhà",
+        "type": "realestate_type"
+      },
+      {
+        "content": "nằm vị trí trung tâm",
+        "type": "normal"
+      },
+      {
+        "content": "giao thông thuận tiện",
+        "type": "surrounding_characteristics"
+      },
+      {
+        "content": ". \n Mô tả : \n Tầng 1 :",
+        "type": "normal"
+      },
+      {
+        "content": "Bếp",
+        "type": "interior_room"
+      },
+      {
+        "content": "+",
+        "type": "normal"
+      },
+      {
+        "content": "Phòng Khách",
+        "type": "interior_room"
+      },
+      {
+        "content": ". \n Tầng 2 :",
+        "type": "normal"
+      },
+      {
+        "content": "2 phòng ngủ",
+        "type": "interior_room"
+      },
+      {
+        "content": "+",
+        "type": "normal"
+      },
+      {
+        "content": "wc",
+        "type": "interior_room"
+      },
+      {
+        "content": ". \n Tầng 3 :",
+        "type": "normal"
+      },
+      {
+        "content": "1 ngủ",
+        "type": "interior_room"
+      },
+      {
+        "content": "+",
+        "type": "normal"
+      },
+      {
+        "content": "Phòng thờ",
+        "type": "interior_room"
+      },
+      {
+        "content": "+",
+        "type": "normal"
+      },
+      {
+        "content": "sân phơi",
+        "type": "interior_room"
+      },
+      {
+        "content": ". \n Chủ nhà xác định",
+        "type": "normal"
+      },
+      {
+        "content": "bán",
+        "type": "transaction_type"
+      },
+      {
+        "content": "đất",
+        "type": "realestate_type"
+      },
+      {
+        "content": ". \n Liên hệ tôi Mr . Tâm 0989310622 .",
+        "type": "normal"
+      }
+    ]
+  }
