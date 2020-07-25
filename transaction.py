@@ -103,38 +103,35 @@ def get_price_sell(post_info, trans_type, attr_price_str):
 
 
 #Transaction_type
-def get_trans_type(post_info):
+def get_trans_type(post_info,iprice,itrans):
     """Phân giải trường `transaction_type` một cách phù hợp
     """
-
     att = post_info['attributes']
-    for i in range(0,len(att)):
-        if att[i]['type'] == 'price':
-            data = [(post_info['content'],'message'),
-                 (att[i]['type'],'price')]
-            if att[i]['type']=='transaction_type':
-                data.append((att[i]['type'], 'transaction_type'))
-                return filter_post(data)
-            """
-            Options:
-                1 - Post chỉ bán
-                2 - Post chỉ thuê
-                3 - Post sang nhượng
-                4 - Post vừa bán vừa thuê
-                5 - Post bán, đang cho thuê, có giá thuê
-                6 - Post bán, đang cho thuê, không có giá thuê
-                7 - Khác
-            """
-            for x in [4, 5, 6, 2, 1, 3, 7]:
-                if x == 2:
-                    data.append(('thuê', 'transaction_type'))
-                if x in [5, 6]:
-                    if filter_post_option(data=data, option=1):
-                        if filter_post_option(data=data, option=x):
-                            return x
-                elif filter_post_option(data=data, option=x):
+    data = [(post_info['content'],'message'),(att[iprice]['content'],'price')]
+
+    if att[itrans]['content']:
+        data.append((att[itrans]['content'], 'transaction_type'))
+        return filter_post(data)
+    """
+    Options:
+    1 - Post chỉ bán
+    2 - Post chỉ thuê
+    3 - Post sang nhượng
+    4 - Post vừa bán vừa thuê
+    5 - Post bán, đang cho thuê, có giá thuê
+    6 - Post bán, đang cho thuê, không có giá thuê            
+    7 - Khác
+    """
+    for x in [4, 5, 6, 2, 1, 3, 7]:
+        if x == 2:
+            data.append(('thuê', 'transaction_type'))
+        if x in [5, 6]:
+            if filter_post_option(data=data, option=1):
+                if filter_post_option(data=data, option=x):
                     return x
-    return 7
+        elif filter_post_option(data=data, option=x):
+            return x
+
 
 
 def filter_post(data):
@@ -201,29 +198,36 @@ with open('data.json', encoding="utf-8") as json_file:
     count_6=0
     count_7=0
     for data in dataset:
+        att = data['attributes']
+        tmp1=-1
+        tmp2=-1
+        for i in range(0, len(att)):
+            if att[i]['type'] == 'price':
+                tmp1=i
+            if att[i]['type'] == 'transaction_type':
+                tmp2=i
         print(data['id'])
-        print ("Transaction_type: ", get_trans_type(data))
-        # att = data['attributes']
-        # for i in range(0, len(att)):
+        #print(data['content'])
+        print("Transaction_type: ", get_trans_type(data,tmp1,tmp2))
         #   if att[i]['type'] == 'price':
         #      print("Price_sell: ", get_price_sell(data,get_trans_type(data),att[i]['content']))
         #      print("Price_rent: ", get_price_rent(data,get_trans_type(data),att[i]['content']))
-        if get_trans_type(data)==1:
+        if get_trans_type(data,tmp1,tmp2)==1:
             count_1 = count_1 + 1
-        elif get_trans_type(data)==2:
+        elif get_trans_type(data,tmp1,tmp2)==2:
             count_2 = count_2 + 1
-        elif get_trans_type(data)==3:
+        elif get_trans_type(data,tmp1,tmp2)==3:
             count_3 = count_3 + 1
-        elif get_trans_type(data)==4:
+        elif get_trans_type(data,tmp1,tmp2)==4:
             count_4 = count_4 + 1
-        elif get_trans_type(data)==5:
+        elif get_trans_type(data,tmp1,tmp2)==5:
             count_5 = count_5 + 1
-        elif get_trans_type(data)==6:
+        elif get_trans_type(data,tmp1,tmp2)==6:
             count_6 = count_6 + 1
-        elif get_trans_type(data)==7:
+        elif get_trans_type(data,tmp1,tmp2)==7:
             count_7 = count_7 + 1
         print("\n")
-        
+
     print(count_1)
     print(count_2)
     print(count_3)
