@@ -57,12 +57,15 @@ def get_data(data):
     # sub_data_x có dạng [text, field]
     #  - text có thể là giá trị của message hoặc price_str
     #  - field có thể là 'message' hoặc 'price_str
-    for x in data:
-        if x[0] is None:
-            continue
-        if x[1] != 'price_str':
-            if check_keyword(x[0]):
-                return True
-        if extract_number(x):
-            return True
+    in_1 = re.search(params.s_in_1, data[0], re.I)
+    in_2 = re.search(params.s_in_2, data[0], re.I)
+    nin_1 = re.search(params.time_u_2, data[0], re.I)
+    if not re.search(params.contract, data[0], re.I):
+        if in_1 and in_2 and not nin_1:
+            if max(data[1]) >0 and max(data[2]) ==0:
+                if max(data[1]) >= 100000000 and max(data[1])<=10000000000000:
+                    return True
+                # else:
+                #     return False
     return False
+

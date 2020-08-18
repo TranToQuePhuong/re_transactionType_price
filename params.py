@@ -70,8 +70,8 @@ s_in_2 = r'(sổ (đỏ|hồng)?|sổ (đỏ|hồng)?\s*riêng)'
 s_nin_2 = r'{}'.format(r_valid)
 
 # s_renting_with_pr_ptrn = r'{}(.{1}){}{}({})?'.format(contract, val_ptrn, cur_u_r, time_u)
-s_renting_with_pr_ptrn = r'(đang cho thuê|hợp đồng (cho)?\s*thuê)(.{1,40})((giá)?\s*(bán)?\s*:?\s*(dự kiến|khoảng|tầm|hơn)?\s*[.]?(\d+)\s*(,\s*\d+)*(\.\s*\d+)*)?\s*(đồng|dong|triệu\s*\d*|trieu\s*\d*|tr(?!( ?,?\s*[1-9]\s*l([ầa]u)?|ệt|\s*\/))\s*\d*|t[ỉiỷy]\s*\d*|USD|\$\s*(USD)?|ngàn|VND|VNĐ|đ)?\s*(\/\s*1?\s*th([áa]ng)?(\s*\/\s*m\s*2)?|\/\s*\d*\s*m\s*2\s*\/\s*1?\s*th([áa]ng)?|\/\s*1\s*năm|\/\s*năm)?'
-s_renting_with_pr_ptrn_1 = r'(đang cho thuê|hợp đồng (cho)?\s*thuê)(giá)?\s*(bán)?\s*:?\s*(dự kiến|khoảng|tầm|hơn)?\s*[.]?(\d+)\s*(,\s*\d+)*(\.\s*\d+)*\s*(đồng|dong|triệu\s*\d*|trieu\s*\d*|tr(?!( ?,?\s*[1-9]\s*l([ầa]u)?|ệt|\s*\/))\s*\d*|t[ỉiỷy]\s*\d*|USD|\$\s*(USD)?|ngàn|VND|VNĐ|đ)?\s*(\/\s*1?\s*th([áa]ng)?(\s*\/\s*m\s*2)?|\/\s*\d*\s*m\s*2\s*\/\s*1?\s*th([áa]ng)?|\/\s*1\s*năm|\/\s*năm)?'
+s_renting_with_pr_ptrn = r'(đang cho thuê|hợp đồng (cho)?\s*thuê)(.{1,40})((giá)?\s* (bán) \s*:?\s*(dự kiến|khoảng|tầm|hơn)?\s*[.]?(\d+)\s*(,\s*\d+)*(\.\s*\d+)*)?\s*(đồng|dong|triệu\s*\d*|trieu\s*\d*|tr(?!( ?,?\s*[1-9]\s*l([ầa]u)?|ệt|\s*\/))\s*\d*|t[ỉiỷy]\s*\d*|USD|\$\s*(USD)?|ngàn|VND|VNĐ|đ)?\s*(\/\s*1?\s*th([áa]ng)?(\s*\/\s*m\s*2)?|\/\s*\d*\s*m\s*2\s*\/\s*1?\s*th([áa]ng)?|\/\s*1\s*năm|\/\s*năm)?'
+s_renting_with_pr_ptrn_1 = r'(đang cho thuê|hợp đồng (cho)?\s*thuê)(giá)?\s* (bán) \s*:?\s*(dự kiến|khoảng|tầm|hơn)?\s*[.]?(\d+)\s*(,\s*\d+)*(\.\s*\d+)*\s*(đồng|dong|triệu\s*\d*|trieu\s*\d*|tr(?!( ?,?\s*[1-9]\s*l([ầa]u)?|ệt|\s*\/))\s*\d*|t[ỉiỷy]\s*\d*|USD|\$\s*(USD)?|ngàn|VND|VNĐ|đ)?\s*(\/\s*1?\s*th([áa]ng)?(\s*\/\s*m\s*2)?|\/\s*\d*\s*m\s*2\s*\/\s*1?\s*th([áa]ng)?|\/\s*1\s*năm|\/\s*năm)?'
 s_renting_with_pr_ptrn_2 = r'thu nhập ((mỗi|một|1|hàng)\s*tháng {}{}{}?|(tháng)?\s*{}{}{}?)'\
     .format(val_ptrn, cur_u_r, time_u, val_ptrn, cur_u_r, time_u)
 # s_renting_with_pr_ptrn_3 = r'((giá)?{}(cho thuê|thuê)|doanh thu)\s*((mỗi|một|1|hàng)?\s*tháng)?\s*{}?\s*{}{}{}?'\
@@ -96,8 +96,9 @@ transfer_ptrn = r'(san(g)? nhượng|nhượng)'
 
 ################################################################################
 # Pattern for posts both sell and rent
-s_and_r_ptrn = r'^(do)?.{0,50}(chính chủ)?\s*(cần)?\s*bán hoặc (cho)?\s*thuê'
-
+s_and_r_ptrn = r'^(do)?.{0,50}(chính chủ)?\s*(cần)?\s*bán (hoặc)? (?!đang) ((cho)?|(giá)?)\s*thuê'
+s_and_r_ptrn1 = r'((cho)?\s*thuê)(.{1,40})((giá)?\s*(bán)?\s*:?\s*(dự kiến|khoảng|tầm|hơn)?\s*[.]?(\d+)\s*(,\s*\d+)*(\.\s*\d+)*)?\s*(đồng|dong|triệu\s*\d*|trieu\s*\d*|tr(?!( ?,?\s*[1-9]\s*l([ầa]u)?|ệt|\s*\/))\s*\d*|t[ỉiỷy]\s*\d*|USD|\$\s*(USD)?|ngàn|VND|VNĐ|đ)?\s*(\/\s*1?\s*th([áa]ng)?(\s*\/\s*m\s*2)?|\/\s*\d*\s*m\s*2\s*\/\s*1?\s*th([áa]ng)?|\/\s*1\s*năm|\/\s*năm)?'
+s_and_r_ptrn2 = r'((cho)?\s*thuê)(giá)?\s*(bán)?\s*:?\s*(dự kiến|khoảng|tầm|hơn)?\s*[.]?(\d+)\s*(,\s*\d+)*(\.\s*\d+)*\s*(đồng|dong|triệu\s*\d*|trieu\s*\d*|tr(?!( ?,?\s*[1-9]\s*l([ầa]u)?|ệt|\s*\/))\s*\d*|t[ỉiỷy]\s*\d*|USD|\$\s*(USD)?|ngàn|VND|VNĐ|đ)?\s*(\/\s*1?\s*th([áa]ng)?(\s*\/\s*m\s*2)?|\/\s*\d*\s*m\s*2\s*\/\s*1?\s*th([áa]ng)?|\/\s*1\s*năm|\/\s*năm)?'
 
 ################################################################################
 # Check kw for sell posts

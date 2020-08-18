@@ -38,7 +38,7 @@ def check_keyword(text):
 
 
 def extract_number_boolean(data):
-    if data[1] == 'price_str':
+    if data[1] == 'price':
         return full_price.extract_full_price(data, 'rent')
     if unit_price.extract_unit_price(data[0], 'rent'):
         return True
@@ -61,7 +61,7 @@ def extract_number_lst(data):
                 return recur
         return [False]
         # tmp = to_str(data[0])
-    if data[1] == 'price_str':
+    if data[1] == 'price':
         return full_price.extract_full_price_2([tmp, data[1]], 'rent')
     u_pr = unit_price.extract_unit_price_2(tmp, 'rent')
     if u_pr[0]:
@@ -70,15 +70,18 @@ def extract_number_lst(data):
 
 
 def get_data(data):
-    if data[2][0] not in ['thuê', 'thue']:
-        return False
-    for x in data[0:len(data)-1]:
-        if x[0] is None:
-            continue
-        if x[1] != 'price_str':
-            if check_keyword(x[0]) and extract_number_boolean(x):
-                return True
-        else:
-            if extract_number_boolean(x):
-                return True
+    in_1 = re.search(params.r_valid, data[0], re.I)
+    nin_1 = re.search(params.r_nin_1, data[0], re.I)
+    nin_2 = re.search(params.r_nin_2, data[0], re.I)
+    nin_3 = re.search(params.r_nin_3, data[0], re.I)
+    nin_4 = re.search(params.r_nin_4, data[0], re.I)
+    nin_5 = re.search(params.r_nin_5, data[0], re.I)
+    nin_6 = re.search(params.r_nin_6, data[0], re.I)
+    if not re.search(params.contract, data[0], re.I):
+        if in_1 and not nin_1 and not nin_2 and not nin_3 and not nin_4 and not nin_5 and not nin_6:
+            if max(data[1])==0 and max(data[2])>0:
+                if max(data[2]) > 299999 and max(data[2]) <500000000:
+                    return True
+                # else:
+                #     return False
     return False
